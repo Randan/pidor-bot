@@ -1,6 +1,5 @@
 import 'dotenv/config';
 import cron from 'node-cron';
-import { sendComplimentAndFlowerToAllUsers } from '../controllers';
 
 const cronOptions = {
   scheduled: true,
@@ -8,5 +7,5 @@ const cronOptions = {
 };
 
 cron.schedule('0 10 * * *', () => {
-  sendComplimentAndFlowerToAllUsers();
+  // TODO: start round controller with arg `fromCron`
 }, cronOptions);

@@ -2,61 +2,10 @@ import { Message } from 'node-telegram-bot-api';
 
 export const webGreetings = () =>
   `<style>body { min-height: 100vh; display: flex; justify-content: center; align-items: center; flex-direction: column; margin: 0; background-color: #40a5ed; font-family: sans-serif; color: #252324; }</style>
-  <h1>Вітаю, я <a href='https://t.me/heWhoMustSendYouComplimentsBot' style='color: #252324;'>ComplimentBot</a>!</h1>
+  <h1>Вітаю, я <a href='https://t.me/pidorbot' style='color: #252324;'>pidorBot</a>!</h1>
   <h2>Заходь!</h2>`;
 
 export const botWokeUp = () => 'Вітаю, я прокинувся!';
-
-export const complimentExists = () =>
-  'А такий вже є, придумай інший ¯\\_(ツ)_/¯';
-
-export const complimentAccepted = () => 'Поняв-приняв, дякую ;)';
-
-export const complimentAcceptedNotify = (
-  msg: Message,
-  compliment: string
-): string => {
-  if (!msg.from) return '';
-
-  const { first_name, username } = msg.from;
-
-  return (
-    `${username ? `@${username}` : first_name} додав(-ла) новий комплімент:\n` +
-    `"${compliment}"`
-  );
-};
-
-export const userExists = (): string =>
-  'Так я і так відправляю тобі компліменти. Тобі мало? Звернись до розробника!';
-
-export const userAccepted = (msg: Message): string => {
-  if (!msg.from) return '';
-
-  const { first_name } = msg.from;
-
-  return `Вітаю, ${first_name}! Тепер я буду відправляти тобі компліменти =)`;
-};
-
-export const userAcceptedNotify = (msg: Message): string => {
-  if (!msg.from) return '';
-
-  const { id, first_name, last_name, username } = msg.from;
-
-  let message =
-    `Є ще той(та) хто теж хоче отримувати компліменти:\n` +
-    `- ID: ${id}\n` +
-    `- First Name: ${first_name}\n`;
-
-  if (last_name) {
-    message += `- Last Name: ${last_name}\n`;
-  }
-
-  if (username) {
-    message += `- User Name: @${username}\n`;
-  }
-
-  return message;
-};
 
 export const help = (msg: Message): string => {
   if (!msg.from) return '';
@@ -64,26 +13,20 @@ export const help = (msg: Message): string => {
   const { first_name } = msg.from;
 
   return (
-    `Вітаю, ${first_name}! Мене звати ComplimentBot.\n` +
+    `Вітаю, ${first_name}! Мене звати PidorBot.\n` +
     '\n' +
-    'Якщо хочеш - я буду відправляти тобі компліменти.\n' +
+    'Я працюю тільки в группах.\n' +
+    'Додай мене в группу і почнемо турнір.\n' +
+    'Не забудь надати меня права адміна.\n' +
     '\n' +
     '/help - Допомога' +
-    '/start - Дозволь мені говорити тобі приємне' +
-    '/stop - Скажи мені "Па-па"' +
-    '/compliment - Якщо хочешь комплімент прямо тут і зараз.' +
-    '/flower - Отримай квіточку' +
-    '/cat - Подивись на котика' +
-    '/dog - Попести песика'
+    '/start - Почати турнір' +
+    '/stop - Зупинити турнір' +
+    '/iwannabeapidor - Прийняти участь у підор-турнірі' +
+    '/idontwannabeapidor - Збігти як остання сучка' +
+    '/standingsyear - Турнирна таблиця за цей рік' +
+    '/standingsall - Турнирна таблиця за весь час'
   );
-};
-
-export const helpNotify = (msg: Message): string => {
-  if (!msg.from) return '';
-
-  const { first_name, username } = msg.from;
-
-  return `${username ? `@${username}` : first_name} попросив(-ла) про допомогу`;
 };
 
 export const userRemoved = (msg: Message): string => {
@@ -91,42 +34,18 @@ export const userRemoved = (msg: Message): string => {
 
   const { first_name } = msg.from;
 
-  return `Ну що, ${first_name}! Будемо досвіданькатись? Мені було добре з тобою, приходь ще =)`;
+  return `${first_name} більше не приймає участі у підор-турнірі. Па-па, сучко!`;
 };
 
-export const userRemovedNotify = (msg: Message): string => {
+export const userAdded = (msg: Message): string => {
   if (!msg.from) return '';
 
-  const { first_name, username } = msg.from;
+  const { first_name } = msg.from;
 
-  return `${
-    username ? `@${username}` : first_name
-  } більше не хоче отримувати компліменти`;
+  return `${first_name} тепер приймає участь у підор-турнірі.`;
 };
 
-export const userNotExists = () =>
-  'Ми з вами не знайомі. Давайте познайомимось. Напишіть /start';
+export const roundWasToday = (): string => 'Йой, сьогодні вже був райнд.';
 
-export const userGotCompliment = (msg: Message): string => {
-  if (!msg.from) return '';
-
-  const { first_name, username } = msg.from;
-
-  return `${username ? `@${username}` : first_name} отримaв(-ла) комплімент`;
-};
-
-export const userGotPhoto = (msg: Message, photoTheme: string): string => {
-  if (!msg.from) return '';
-
-  const { first_name, username } = msg.from;
-
-  return `${username ? `@${username}` : first_name} отримaв(-ла) світлину на тему "${photoTheme}"`;
-};
-
-export const thereIsFlower = (): string => 'Тримай квіточку';
-
-export const thereIsCat = (): string => 'Тримай котика';
-
-export const thereIsDog = (): string => 'Тримай песика';
-
-export const allUsersGotCompliment = (): string => 'Всі отримали компліменти';
+export const userExists = (): string =>
+  'Агов! Двічі за раз підаром бути важко. Ти вже приймаєш участь!';

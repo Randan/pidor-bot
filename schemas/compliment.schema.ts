@@ -1,11 +1,11 @@
 import mongoose, { Schema } from 'mongoose';
-import { dbComplimentsCollection } from '../utils';
+import { dbLoadingPhrasesCollection } from '../utils';
 import { ICompliment } from '../interfaces';
 
 const complimentSchema = new Schema<ICompliment>({
   value: String
 });
 
-const Compliments = mongoose.model(dbComplimentsCollection, complimentSchema);
+const Compliments = mongoose.model(dbLoadingPhrasesCollection, complimentSchema);
 
 export default Compliments;

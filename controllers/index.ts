@@ -1,19 +1,19 @@
-import addCompliment from './addCompliment';
+import addGroup from './addGroup';
 import addUser from './addUser';
+import getAllStandings from './getAllStandings';
+import getYearStandings from './getYearStandings';
 import help from './help';
+import removeGroup from './removeGroup';
 import removeUser from './removeUser';
-import sendCompliment from './sendCompliment';
-import sendComplimentAndFlowerToAllUsers from './sendComplimentAndFlowerToAllUsers';
-import sendPhotoFromStock from './sendPhotoFromStock';
-import getPhotoFromQuery from './getPhotoFromQuery';
+import startRound from './startRound';
 
 export {
-  addCompliment,
+  addGroup,
   addUser,
+  getAllStandings,
+  getYearStandings,
   help,
+  removeGroup,
   removeUser,
-  sendCompliment,
-  sendComplimentAndFlowerToAllUsers,
-  sendPhotoFromStock,
-  getPhotoFromQuery,
+  startRound
 };

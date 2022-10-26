@@ -1,5 +1,5 @@
 {
-  "name": "compliment-tg-bot",
+  "name": "pidor-tg-bot",
   "version": "1.0.0",
   "description": "",
   "main": "index",
@@ -15,7 +15,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "axios": "^0.27.2",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
     "mongodb": "^4.6.0",

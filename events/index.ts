@@ -1,58 +1,39 @@
 import { Message } from 'node-telegram-bot-api';
 import bot from '../bot';
 import {
-  addCompliment,
+  addGroup,
   addUser,
-  getPhotoFromQuery,
+  getAllStandings,
+  getYearStandings,
   help,
+  removeGroup,
   removeUser,
-  sendCompliment,
-  sendComplimentAndFlowerToAllUsers,
-  sendPhotoFromStock,
+  startRound
 } from '../controllers';
-import { lib } from '../utils';
 
 const events: Record<string, RegExp> = {
   help: /\/help/,
   start: /\/start/,
   stop: /\/stop/,
-  compliment: /\/compliment/,
-  complimentToAll: /\/toAll/,
-  addCompliment: /\/add/,
-  flower: /\/flower/,
-  cat: /\/cat/,
-  dog: /\/dog/,
-  getPhoto: /\/getPhoto/,
+  iwannabeapidor: /\/iwannabeapidor/,
+  idontwannabeapidor: /\/idontwannabeapidor/,
+  startround: /\/startround/,
+  standingsyear: /\/standingsyear/,
+  standingsall: /\/standingsall/
 };
 
 bot.onText(events.help, (msg: Message): void => help(msg));
 
-bot.onText(events.start, (msg: Message): Promise<void> => addUser(msg));
+bot.onText(events.start, (msg: Message): Promise<void> => addGroup(msg));
 
-bot.onText(events.stop, (msg: Message): Promise<void> => removeUser(msg));
+bot.onText(events.stop, (msg: Message): Promise<void> => removeGroup(msg));
 
-bot.onText(events.compliment, (msg: Message): Promise<void> => sendCompliment(msg));
+bot.onText(events.iwannabeapidor, (msg: Message): Promise<void> => addUser(msg));
 
-bot.onText(events.complimentToAll, () => sendComplimentAndFlowerToAllUsers());
+bot.onText(events.idontwannabeapidor, (msg: Message): Promise<void> => removeUser(msg));
 
-bot.onText(events.addCompliment, (msg: Message): Promise<void> => addCompliment(msg));
+bot.onText(events.startround, (msg: Message): Promise<void> => startRound(msg));
 
-bot.onText(events.getPhoto, (msg: Message): void => getPhotoFromQuery(msg));
+bot.onText(events.standingsyear, (msg: Message): Promise<void> => getYearStandings(msg));
 
-bot.onText(
-  events.flower,
-  (msg: Message): Promise<void> =>
-    sendPhotoFromStock(msg, 'flower', lib.thereIsFlower())
-);
-
-bot.onText(
-  events.cat,
-  (msg: Message): Promise<void> =>
-    sendPhotoFromStock(msg, 'cat', lib.thereIsCat())
-);
-
-bot.onText(
-  events.dog,
-  (msg: Message): Promise<void> =>
-    sendPhotoFromStock(msg, 'dog', lib.thereIsDog())
-);
+bot.onText(events.standingsall, (msg: Message): Promise<void> => getAllStandings(msg));

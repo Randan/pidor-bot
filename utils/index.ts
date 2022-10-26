@@ -1,29 +1,21 @@
-import notifyAdmin from './notifyAdmin';
-import handleError from './handleError';
 import {
   adminId,
   appPort,
-  dbComplimentsCollection,
+  dbGroupsCollection,
+  dbLoadingPhrasesCollection,
   dbMongooseUri,
   dbUrl,
-  dbUsersCollection,
-  timezone,
-  unsplashAppToken,
-  unsplashUri,
+  timezone
 } from './envVars';
 import * as lib from './lib';
 
 export {
   adminId,
   appPort,
-  dbComplimentsCollection,
+  dbLoadingPhrasesCollection,
   dbMongooseUri,
   dbUrl,
-  dbUsersCollection,
-  handleError,
+  dbGroupsCollection,
   lib,
-  notifyAdmin,
-  timezone,
-  unsplashAppToken,
-  unsplashUri,
+  timezone
 };

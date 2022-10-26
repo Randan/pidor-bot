@@ -1,6 +1,6 @@
 /* eslint-disable import/first */
 import express, { Express, Request, Response } from 'express';
-import { appPort, lib, notifyAdmin } from './utils';
+import { appPort, lib } from './utils';
 
 const app: Express = express();
 
@@ -11,8 +11,7 @@ app.get('/', (req: Request, res: Response): void => {
 import './events';
 
 app.listen(appPort, () => {
-  notifyAdmin(lib.botWokeUp());
-  console.log(`⚡⚡⚡ ComplimentBot Alive on PORT: ${appPort}`);
+  console.log(`⚡⚡⚡ PidorBot Alive on PORT: ${appPort}`);
 });
 
 import './cron';

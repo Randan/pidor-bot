@@ -1,9 +1,9 @@
 import mongoose, { Schema } from 'mongoose';
-import { dbUsersCollection } from '../utils';
+import { dbGroupsCollection } from '../utils';
 import { IUser } from '../interfaces';
 
 const userSchema = new Schema<IUser>({
-  telegramId: Number,
+  tgUserId: Number,
   firstName: String,
   lastName: {
     type: String,
@@ -15,6 +15,6 @@ const userSchema = new Schema<IUser>({
   }
 });
 
-const Users = mongoose.model(dbUsersCollection, userSchema);
+const Users = mongoose.model(dbGroupsCollection, userSchema);
 
 export default Users;

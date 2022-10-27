@@ -12,6 +12,10 @@ const userSchema = new Schema<IUser>({
   userName: {
     type: String,
     default: undefined
+  },
+  pidorCount: {
+    type: Number,
+    default: 0
   }
 });
 

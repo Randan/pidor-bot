@@ -1,4 +1,4 @@
-import Users from './user.schema';
-import Compliments from './compliment.schema';
+import Groups from './group.schema';
+import LoadingPhrases from './loadingPhrases.schema';
 
-export { Users, Compliments };
+export { Groups, LoadingPhrases };

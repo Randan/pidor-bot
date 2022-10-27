@@ -9,5 +9,9 @@ export interface IUser {
 export interface IGroup {
   tgGroupId: number;
   tournamentParticipants: IUser[];
-  lastRoundDate: Date;
+  lastRoundDate?: Date;
 }
+
+export interface ILoadingPhrases {
+  value: string[];
+};
